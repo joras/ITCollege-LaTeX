@@ -2,6 +2,9 @@
 %%
 %% ITKolledži lõputöö stiilipakett
 %%
+%% Stiilipaketi aluseks oli Kaarel Kaljurand poolt loodud
+%% ut_thesis.sty stiilipakett - http://kodu.ut.ee/~kaarel/UTThesis/UTF8/ut_thesis.sty
+%%
 %%
 
 \NeedsTeXFormat {LaTeX2e}[1994/12/01]
@@ -43,7 +46,6 @@
 \brokenpenalty=10000
 
 %% eesti-stiilis jutuma"rgid
-%\newcommand{\jutt}[1]{\mbox{,\hspace{-1pt},}#1''}
 \newcommand{\jutt}[1]{,,#1''}
 
 %%
@@ -53,10 +55,7 @@
 \def\ylikool{Eesti Infotehnoloogia KolledŽ}
 
 %%
-%% ja need on muutujad (a"kki peaks teaduskonna
-%% konstandiks panema?)
 %%
-
 \def\eriala#1{\gdef\@eriala{#1}}
 \def\paber#1{\gdef\@paber{#1}}
 \def\juhendaja#1{\gdef\@juhendaja{#1}}
@@ -206,6 +205,3 @@ Töö vastab kehtivatele nõuetele &  \\
 	\end{figure}}
 
 
-%%
-%% ut_thesis.sty ends
-%%

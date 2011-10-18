@@ -1,0 +1,65 @@
+\documentclass[a4paper,12pt]{article}
+ 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[estonian]{babel}
+\usepackage{txfonts}
+\usepackage{times}
+
+
+%% stiililehe laadimine
+\usepackage{itk_thesis}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[hmargin={3.1cm, 2.54cm},vmargin=3.17cm]{geometry}
+\graphicspath{{pildid/}}
+\linespread{1.5}
+
+%% lingid
+\usepackage{hyperref}
+
+\usepackage[toc, xindy, style=list, nonumberlist]{glossaries}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{%
+\vspace*{1.5cm}}
+ 
+   
+\begin{document}
+
+
+%% Tiitelleht
+\begin{tiitelleht}
+\pealkiri{Lõputöö Latexis}
+\paber{Diplomitöö}
+\autor{Jaan Oras}
+
+\eriala{IT süsteemide arenduse õppekava}
+
+\juhendaja{Sinu Juhendaja}
+\konsultant{Sinu Konsultant}
+\end{tiitelleht}
+
+\autorideklaratsioon
+
+\teesisukord
+
+%% Peatükid
+\include{sissejuhatus}
+
+%% jooniste peatükk
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{Joonised}
+
+\listoffigures
+
+%% viidete peatükk
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{Viited}
+
+\bibliography{references}
+\bibliographystyle{unsrt}
+		
+\end{document}

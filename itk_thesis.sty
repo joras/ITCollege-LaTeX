@@ -1,0 +1,211 @@
+%%
+%%
+%% ITKolledži lõputöö stiilipakett
+%%
+%%
+
+\NeedsTeXFormat {LaTeX2e}[1994/12/01]
+\def \filename {itk_thesis.sty}
+\def \filedate {2011/04/01}
+\def \fileversion {0.1}
+\ProvidesPackage {itk_thesis}[\filedate\space\fileversion\space
+  Contributed and Supported LaTeX2e package]
+
+\typeout{Package: `itk_thesis' \fileversion\space <\filedate>}
+\typeout{Document Style Option `ut_thesis' for LaTeX2e.}
+
+%%
+%% vaatame kas laaditud on 'article' vo~i 'report'
+%%
+\newif\ifmyartikkel
+\myartikkelfalse
+
+\@ifundefined{chapter}{
+	\myartikkeltrue
+	}{}
+
+%%
+%% ku"ljendusparameetrid
+%% hetkel vo~tame 'article' vaikeva"a"rtused
+%%
+
+%\oddsidemargin 0.5in \evensidemargin 0in
+%\marginparwidth 40pt \marginparsep 10pt
+%\topmargin 0pt \headsep .5in
+%\textheight 8.1in \textwidth 6in
+
+%% kuidas teha teistsuguseid lo~iguvahesid?
+%\renewcommand{\newblock{\medskip\noindent}}
+
+%% Disallow page breaks at hyphens (this will give some underfull vbox's,
+%% so an alternative is to use \brokenpenalty=100 and manually search
+%% for and fix such page breaks)
+\brokenpenalty=10000
+
+%% eesti-stiilis jutuma"rgid
+%\newcommand{\jutt}[1]{\mbox{,\hspace{-1pt},}#1''}
+\newcommand{\jutt}[1]{,,#1''}
+
+%%
+%% need on konstandid 
+%%
+
+\def\ylikool{Eesti Infotehnoloogia KolledŽ}
+
+%%
+%% ja need on muutujad (a"kki peaks teaduskonna
+%% konstandiks panema?)
+%%
+
+\def\eriala#1{\gdef\@eriala{#1}}
+\def\paber#1{\gdef\@paber{#1}}
+\def\juhendaja#1{\gdef\@juhendaja{#1}}
+
+\def\autor#1{\gdef\@autor{#1}}
+\def\pealkiri#1{\gdef\@pealkiri{#1}}
+\def\konsultant#1{\gdef\@konsultant{#1}}
+
+
+%%
+%% eestikeelsed kuupa"evad
+%%
+\def\@kuuaasta{\ifcase\the\month\or
+  jaanuar\or veebruar\or märts\or aprill\or mai\or juuni\or
+  juuli\or august\or september\or oktoober\or november\or detsember\fi
+  \space \number\the\year}
+
+\def\@aasta{\the\year}
+
+%%
+%% punktijoru genereerimiseks vajalik
+%%
+
+\newcommand{\indexdotsep}{1.24}
+\newcommand{\indexdotfill}{%
+  \leaders\hbox{$\m@th
+    \mkern\indexdotsep mu\hbox{.}%
+    \mkern\indexdotsep mu$}\hfill}
+
+
+%% tiitelleht
+\def\tiitelleht{\newpage}
+\def\endtiitelleht{\teetiitelleht}
+
+
+%%
+%% tiitellehe tegemine
+%%
+\def\teetiitelleht{%
+        \thispagestyle{empty}
+        \Large
+	\begin{center}
+        \Huge\uppercase\expandafter{\ylikool}
+	\end{center}
+
+	\vskip1in
+
+    \begin{center}
+        	\Large\expandafter{\@autor}
+	\end{center}
+
+        \begin{center}
+                \Huge\uppercase\expandafter{\@pealkiri}
+        \end{center}
+
+        \vfill
+        \Large\centerline{\@paber}
+ \vfill
+ \begin{center}
+		\Large\uppercase\expandafter{\@eriala}
+		 \end{center}
+ \vfill
+	\vskip.5in
+        \begin{flushright}
+        	\large{Juhendaja: \@juhendaja} 
+        	\\
+        	\large{Konsultant: \@konsultant}
+	\end{flushright}
+	\vskip.5in
+
+	\normalsize
+
+
+
+        \vfill
+        \Large\centerline{Tallinn \@aasta}}
+        
+
+       
+%autori -------------------------------------------------
+\def\autorideklaratsioon{%
+        \thispagestyle{empty}
+        \newpage
+        
+		 \begin{center}
+			\Large\uppercase\expandafter{Autorideklaratsioon}
+		 \end{center}
+		 
+		 \vfill
+        
+        	\begin{flushleft}
+Deklareerin, et käesolev diplomitöö, mis on minu iseseisva töö tulemus, on esitatud Eesti Infotehnoloogia Kolledžile lõpudiplomi taotlemiseks IT Süsteemide arendamise erialal.  Diplomitöö alusel ei ole varem eriala lõpudiplomit taotletud.
+        	\end{flushleft}
+        	
+        	\vfill
+        	
+        	
+    \normalsize
+	\begin{flushleft}
+
+	\begin{tabular}{p{6.0cm}p{4.0cm}}
+	Autor:\@autor & ..............................\\
+	 & (allkiri ja kuupäev)  \\
+Töö vastab kehtivatele nõuetele &  \\	
+	Juhendaja:\@juhendaja & ..............................\\
+	 & (allkiri ja kuupäev) \\
+	\end{tabular}
+
+	\end{flushleft}   	                	        	
+}
+
+
+%%
+%% sissejuhatus
+%%
+
+%% sissejuhatuse ette numbrit ei kirjutata aga
+%% sisukorda teeme ma"rke ikka
+
+\def\sissejuhatus#1{%
+	\ifmyartikkel
+        	\section*{#1}
+		\addcontentsline{toc}{section}{#1}
+	\else
+        	\chapter*{#1}
+		\addcontentsline{toc}{chapter}{#1}
+	\fi}
+
+%%
+%% sisukorra tegemine
+%%
+\def\teesisukord{%
+	\newpage
+        \tableofcontents
+        \newpage}
+
+\usepackage{float}
+
+\def\pilt#1#2#3{%
+	\begin{figure}[H]
+	\begin{center}
+	\leavevmode
+	\includegraphics[width=0.8\textwidth]{#1}
+	\end{center}
+	\caption{#2}
+	\label{#3}
+	\end{figure}}
+
+
+%%
+%% ut_thesis.sty ends
+%%
